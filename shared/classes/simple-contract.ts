@@ -1,4 +1,5 @@
 import Web3 from 'web3';
+import { FormattedTransactionReceipt } from './formatted-transaction-receipt';
 
 class SimpleContract {
   private contract: any;
@@ -15,60 +16,24 @@ class SimpleContract {
     return number.toString();
   }
 
-  public async setNumber(number: number): Promise<void> {
-    await this.contract.methods
+  public async setNumber(number: number): Promise<FormattedTransactionReceipt> {
+    const receipt = await this.contract.methods
       .setNumber(number)
       .send({ from: process.env.FROM });
+
+    return new FormattedTransactionReceipt(receipt);
   }
 
-  public async multiply(factor: number): Promise<void> {
-    await this.contract.methods
+  public async multiply(factor: number): Promise<FormattedTransactionReceipt> {
+    const receipt = await this.contract.methods
       .multiply(factor)
       .send({ from: process.env.FROM });
+
+    return new FormattedTransactionReceipt(receipt);
   }
 
-  private static readonly ABI = [
-    {
-      inputs: [],
-      name: 'getNumber',
-      outputs: [
-        {
-          internalType: 'uint256',
-          name: '',
-          type: 'uint256',
-        },
-      ],
-      stateMutability: 'view',
-      type: 'function',
-      constant: true,
-    },
-    {
-      inputs: [
-        {
-          internalType: 'uint256',
-          name: '_number',
-          type: 'uint256',
-        },
-      ],
-      name: 'setNumber',
-      outputs: [],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-    {
-      inputs: [
-        {
-          internalType: 'uint256',
-          name: '_factor',
-          type: 'uint256',
-        },
-      ],
-      name: 'multiply',
-      outputs: [],
-      stateMutability: 'nonpayable',
-      type: 'function',
-    },
-  ];
+  private static readonly ABI =
+    require('../../build/contracts/SimpleContract.json').abi;
 }
 
 export default SimpleContract;
