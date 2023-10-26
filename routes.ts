@@ -23,12 +23,6 @@ router.get('/', (req: Request, res: Response) => {
 router.get('/number', async (req: Request, res: Response) => {
   const number = await contract.getNumber();
 
-  if (number === undefined) {
-    return res.json({
-      number: 'undefined',
-    });
-  }
-
   res.json({
     number,
   });
@@ -36,17 +30,19 @@ router.get('/number', async (req: Request, res: Response) => {
 
 router.post('/number', async (req: Request, res: Response) => {
   const { number } = req.body;
-  await contract.setNumber(number);
+  const result = await contract.setNumber(number);
   res.json({
     number,
+    gasUsed: result.getGasUsed(),
   });
 });
 
 router.post('/number/multiply', async (req: Request, res: Response) => {
   const { number } = req.body;
-  await contract.multiply(number);
+  const result = await contract.multiply(number);
   res.json({
     number,
+    gasUsed: result.getGasUsed(),
   });
 });
 

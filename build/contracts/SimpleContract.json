@@ -1686,12 +1686,12 @@
     "1698282777622": {
       "events": {},
       "links": {},
-      "address": "0x3dc40E24ffF1b2eA04D2FC38F5A994Ed40A1Cf78",
-      "transactionHash": "0x312874f80c54299a12256a1360adf24052ac01aabcaeea4132eb0ff77aab3b0c"
+      "address": "0xbfa818F7580b242743B6741cD324cFa0ac649DB8",
+      "transactionHash": "0x23ec2ef276f56d6ee28aedb027ae1b5be030c235a77f24910717c971c999211c"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2023-10-26T01:40:30.465Z",
+  "updatedAt": "2023-10-26T02:34:40.001Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
