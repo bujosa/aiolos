@@ -21,3 +21,21 @@ npm install
 ```
 npm run dev
 ```
+
+### Local development
+
+1. Install [Ganache](https://www.trufflesuite.com/ganache)
+
+   ```
+   npm install -g ganache
+   ```
+
+2. Run Ganache
+
+   This will run a local blockchain in your machine. You can see the accounts and private keys in the console and the local blockchain will be running in the port 8545.
+
+   ```bash
+   ganache-cli
+   ```
+
+Also you can use hardhat to run a local blockchain, you can find more information [here](https://hardhat.org/guides/mainnet-forking.html). Currently Ganache and Truffle are deprecated. Hardhat is the new tool for smart contract development.
